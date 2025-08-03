@@ -197,7 +197,12 @@ def make_image(df:pd.DataFrame):
 # メイン関数
 def main():
     # 出力する画像リストのcsv名
-    fname = BASE_DIR / "商品画像作成.csv" 
+    fname = BASE_DIR / "商品画像作成.csv"
+
+    # 完成画像ディレクトリがなければ作成
+    output_dir = BASE_DIR / "完成画像"
+    if not output_dir.exists():
+        output_dir.mkdir(parents=True, exist_ok=True)
 
     # 出力用のcsvの読込
     df = pd.read_csv(fname)
